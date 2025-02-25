@@ -415,6 +415,7 @@
 # Unordered {}
 # Immutable whereas add/remove is allowede
 # No duplicates allowed
+# add/remove/pop - allowed
 
 # Tuple:
 # An ordered collection like a list, but immutable, meaning once you put something in a tuple, you can’t change it. It’s like a sealed box—once it’s packed, it’s done.
@@ -422,6 +423,7 @@
 # Ordered ()
 # Immutable
 # Duplicates are allowed'
+# 
 # Faster than list
 
 
@@ -431,19 +433,22 @@
 # Immutable
 # Ordered
 # No duplicates
+# update/pop/popitem/ - to modify
 
 # List
 # Ordered
-# Mutable -  
+# Mutable
 # Dups allowed
+# append/insert/remove - to modify
 
-# fruits = [1, "banana", "grape", "coconut"]
+
+# fruits = ["coconut", "banana", "grape",3,1,2]
 # print(fruits) # prints the entire list 
-# # print(fruits[3]) # prints the item at the 3rd index, here coconut. Also remember indexing operator has [start : end : step]
+# print(fruits[3]) # prints the item at the 3rd index, here coconut. Also remember indexing operator has [start : end : step]
 
 # for fruit in fruits: # iterates through the list items one at a time
 #     if(isinstance(fruit,str)):
-#         print(fruit[::-1], end=" ")
+#         print(fruit[::-1], end="*")
 #     print(fruit)
 
 
@@ -458,15 +463,24 @@
 # fruits.count("apple") # to count the number of times an element appears in the list, use count function as list supports duplicates.
 
 # Set
+# Unordered
+# Immutable
+# Duplicates not allowed
+# add/remove/pop - allowed
 
-fruits = {"apple", "banana", "pineapple", "grape"}
-print(fruits) # unordered when printing
+# fruits = {"apple","apple", "banana", "pineapple", "grape"}
+# print(fruits) # unordered when printing
 
+# fruits.pop()
+# print(fruits) # unordered when printing
 # fruits.add("orange") # adds an element to the set
 # fruits.remove("apple") # removes an element from the set
 # fruits.pop() # removes the first element from the set but it is unordered
 
 # Tuple
+# Orderd
+# Immutable
+# Duplicates allowed
 
 # fruits = ("apple", "banana", "pineapple", "grape")
 # print(len(fruits)) # returns the length of the tuple
@@ -478,6 +492,8 @@ print(fruits) # unordered when printing
 # 2D List = Made up of lists within list
 
 # fruits = ["apple", "oranges", "banana"]
+# for i in fruits:
+#     print(i,end=" ")
 # vegetables = ["celery", "carrots", "potatoes"]
 # meats = ["chicken", "fish", "turkey"]
 
@@ -492,6 +508,11 @@ print(fruits) # unordered when printing
 # You can do the same with tuple and set
 
 # Dictionary:
+# Ordered
+# Mutable
+# Duplicates not allowed
+# pop/popitem/update({key:value})/clear
+
 
 # capitals = {
 #     "USA" : "Washington DC",
@@ -508,15 +529,14 @@ print(fruits) # unordered when printing
 # capitals.clear() # to clear the dictionary
 
 # keys = capitals.keys() # returns all the keys of the dictionary
-
-# for key in keys: # iterating through every key of the dictionary
-#     print(key)
+# print(capitals.keys())# for key in keys: # iterating through every key of the dictionary
+    # print(key)
 
 # for value in capitals.values(): # iterating through all the values in the dictionary
 #     print(value)
 
 # items = capitals.items() # returns a 2D list of tuples like object providing a view on the dict's items
-
+# print(items)
 # for key, value in items: # iterating through each key value pair and printing it
 #     print(f"{key} : {value}")
 
@@ -613,7 +633,7 @@ print(fruits) # unordered when printing
 # def net_price(list_price, discount = 0, tax = 0.05):
 #     return list_price * (1 - discount) * (1 + tax)
 
-# print(net_price(500)) # here discount and tax is not given in the function call and hence they take their default values 0 and 0.05 respectively.
+# print(net_price(500, t = 5)) # here discount and tax is not given in the function call and hence they take their default values 0 and 0.05 respectively.
 
 # Note that the Default parameters should be at the end of the parameter list
 
@@ -733,6 +753,9 @@ print(fruits) # unordered when printing
 #             return False
 
 # print(is_weekend("Monday"))
+    
+    
+
 
 # Module = a file containting code you want to include in your program
 #          use 'import' to include a module (built-in or your own)
@@ -756,8 +779,8 @@ print(fruits) # unordered when printing
 # import string
 
 # chars = string.punctuation + string.digits + string.ascii_letters
-# chars = list(chars)
-# keys = chars.copy()
+# # chars = list(chars)
+# keys = chars
 
 # random.shuffle(keys)
 
@@ -814,15 +837,15 @@ print(fruits) # unordered when printing
 # car1 = Car("BMW", 2025, "Black", False) # creating an object
 # car2 = Car("Benz", 2024, "White", True) # creating an object
 
-# # print(car1.model)
-# # print(car1.year)
-# # print(car1.color)
-# # print(car1.for_sale)
+# print(car1.model)
+# print(car1.year)
+# print(car1.color)
+# print(car1.for_sale)
 
-# # print(car2.model)
-# # print(car2.year)
-# # print(car2.color)
-# # print(car2.for_sale)
+# print(car2.model)
+# print(car2.year)
+# print(car2.color)
+# print(car2.for_sale)
 
 # car1.drive()
 # car1.stop()
@@ -831,6 +854,11 @@ print(fruits) # unordered when printing
 # In Python, a constructor is a special method inside a class that gets called when you create an object (instance) of that class. It's like when you build a new toy from a box of parts, and the constructor is the person who sets everything up for you right when you open the box!
 # In Python, we use a special method __init__ to initialise the object (methods that start with double underscore are called as dunder methods or magic functions, which we will explain in depth later!)
 # Note that I am calling my functions as methods now. Any function defined inside a class is called as method.
+
+# self allows each instance of the class to have its own data and methods that can operate on that data.
+# It's a way to refer to the instance of the class within the methods.
+# Without self, you wouldn’t be able to access instance variables or other instance methods inside the class.
+
 
 # Class Variables:
 # Shared among all instances(objects) of a class
@@ -893,6 +921,7 @@ print(fruits) # unordered when printing
 # dog.speak()
 # cat.speak()
 # mouse.speak()
+
 
 # Types:
 
@@ -1036,6 +1065,8 @@ print(fruits) # unordered when printing
 
 # animals = [Dog(), Cat(), Car()]
 
+
+
 # for animal in animals:
 #     animal.speak()
 #     print(animal.alive)
@@ -1092,6 +1123,8 @@ print(fruits) # unordered when printing
 # student1 = Student("Franklin", 10)
 # student2 = Student("Freddy", 11)
 # student3 = Student("Jen", 14)
+
+
 
 # Student.get_count()
 
