@@ -1075,12 +1075,15 @@
 # Imagine this: You have a method that you want to share with the world, but you don't need any of the fancy stuff that comes with class objects. You just want a plain old function, but inside a class. Enter Static Methods!
 
 # A static method in Python is a method that belongs to a class, but doesn’t depend on any instance of the class (no need to create an object). It doesn’t need access to any instance-specific data—it's a standalone function that’s just inside a class for organization.
+# Static method cannot access instance variables(self)
+# Can access class variable through Class.varname
+# Can be called using Class/Object
 
 # Instance methods = best for operations on instances of the class (objects)
 # Static methods = best for utility functions that do not need access to class data
 
 # class Employee:
-
+#     my_job = "manager"
 #     def __init__(self, name, position):
 #         self.name = name
 #         self.position = position
@@ -1090,10 +1093,18 @@
     
 #     @staticmethod
 #     def is_valid_position(position):
-#         valid_positions = ["Manager", "Cook", "CEO", "CTO", "Janitor"]
-#         return position in valid_positions
+#         # valid_positions = ["Manager", "Cook", "CEO", "CTO", "Janitor"]
+#         Employee.my_job = position
+#         # print(Employee.my_job)
+#         # return position in valid_positions
 
-# print(Employee.is_valid_position("Janitor")) # static methods are accessed using class name not by any objects
+# emp = Employee("Abhi","SeniorEng")
+# emp.is_valid_position("Helloo")
+# print(emp.my_job)
+# # print(emp.is_valid_position("Hi"))
+# print(Employee.my_job)
+
+# print(Employee.is_valid_position(Employee.my_name)) # static methods are accessed using class name not by any objects
 
 # Class Methods:
 # Let’s talk about class methods, which are like the VIP members of the Python method family. They’re not just regular methods, they’re special methods that operate on the class itself instead of instances.
@@ -1104,6 +1115,10 @@
 
 # Instance (object) methods have "self" as the first parameter which refers to the object that is using the method at that point of time whereas, class methods have "cls" as the first parameter
 
+# Takes cls as the first parameter (refers to the class, not an instance).
+# Can access and modify class variables.
+# Cannot access instance variables (self).
+# Can be accessed via both class name and instance.
 # class Student:
 
 #     count = 0
@@ -1132,6 +1147,20 @@
 # Instance Methods = best for operations on instances of the class (objects)
 # Static Methods = best for utility functions that do not need access to class data
 # Class Methods = best for class-level data or require access to the class itself
+
+# 1. Class Method (@classmethod)
+# Takes cls as the first parameter (refers to the class, not an instance).
+# Can access and modify class variables.
+# Cannot access instance variables (self).
+# Can be accessed via both class name and instance.
+
+# 2. Static Method (@staticmethod)
+# Does not take self (instance) or cls (class reference) as a parameter.
+# Cannot access or modify instance or class variables directly.
+# Can only access class variables using the class name.
+# Used for utility/helper functions related to the class.
+
+
 
 # Magic methods (The secret wizards of Python):
 # Let’s dive into the world of magic methods, a.k.a. dunder methods (because they start and end with double underscores). These are special methods in Python that allow you to customize the behavior of your objects. They might seem like magic at first, but they’re just Python’s way of letting you define how objects behave when they’re interacted with in certain ways.
